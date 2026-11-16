@@ -3536,9 +3536,22 @@ react/cjs/react-jsx-runtime.production.js:
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 <script src="notificacoes-compras.js" defer></script>
 <script>
-  /* Notificações de compras: INATIVAS até existir um endpoint real (sem endpoint, nada é exibido). */
+  /* Notificações de compras: modo demo (dados fictícios) SEM a etiqueta "DEMONSTRAÇÃO".
+     Quando tiver endpoint real, troque para:
+     SalesNotifications.init({ mode: 'live', endpoint: 'https://SEU-DOMINIO/api/notificacoes-publicas', position: 'top-right' });
+  */
   window.addEventListener('DOMContentLoaded', function () {
-    if (window.SalesNotifications) SalesNotifications.init({ mode: 'live', endpoint: '', position: 'top-right' });
+    if (window.SalesNotifications) {
+      SalesNotifications.init({
+        mode: 'demo',
+        allowDemo: true,
+        showDemoBadge: false,
+        position: 'top-right',
+        initialDelay: 1800,
+        intervalMin: 7000,
+        intervalMax: 14000
+      });
+    }
   });
 </script>
 </body></html>
